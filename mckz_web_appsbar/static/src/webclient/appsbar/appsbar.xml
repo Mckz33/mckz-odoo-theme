@@ -107,6 +107,11 @@
                                 <i class="fa fa-id-card"/>
                                 <span>Meu Perfil</span>
                             </a>
+                            <a class="mckz_dropdown_item" t-on-click="() => this.openUserPreferences()">
+                                <i class="fa fa-sliders"/>
+                                <span>Preferências</span>
+                            </a>
+                            <div class="mckz_dropdown_divider"/>
                             <a class="mckz_dropdown_item" t-on-click="() => this.openDocumentation()">
                                 <i class="fa fa-book"/>
                                 <span>Documentação</span>
@@ -118,6 +123,11 @@
                             <a class="mckz_dropdown_item" t-on-click="() => this.openShortcuts()">
                                 <i class="fa fa-keyboard-o"/>
                                 <span>Atalhos</span>
+                            </a>
+                            <div class="mckz_dropdown_divider"/>
+                            <a class="mckz_dropdown_item" t-on-click="() => this.openOdooStore()">
+                                <i class="fa fa-download"/>
+                                <span>Instalar App</span>
                             </a>
                             <div class="mckz_dropdown_divider"/>
                             <a class="mckz_dropdown_item mckz_logout" t-on-click="() => this.logout()">

@@ -253,6 +253,23 @@ export class AppsBar extends Component {
         document.dispatchEvent(event);
     }
 
+    openUserPreferences() {
+        this.closeSidebar();
+        this.actionService.doAction({
+            type: 'ir.actions.act_window',
+            res_model: 'res.users',
+            res_id: this.userId,
+            views: [[false, 'form']],
+            target: 'new',
+            context: { 'form_view_ref': 'base.view_users_form_simple_modif' },
+        });
+    }
+
+    openOdooStore() {
+        this.closeSidebar();
+        this.actionService.doAction('base.open_module_tree');
+    }
+
     logout() {
         browser.location.href = '/web/session/logout';
     }
