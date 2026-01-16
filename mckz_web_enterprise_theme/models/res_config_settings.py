@@ -53,13 +53,13 @@ class ResConfigSettings(models.TransientModel):
     #----------------------------------------------------------
 
     theme_border_radius = fields.Selection([
-        ('none', 'None (0px)'),
-        ('sm', 'Small (4px)'),
-        ('md', 'Medium (8px)'),
-        ('lg', 'Large (12px)'),
-        ('xl', 'Extra Large (16px)'),
-        ('2xl', 'Double XL (24px)'),
-    ], string='Border Radius', default='md',
+        ('none', 'Nenhum (0px)'),
+        ('sm', 'Pequeno (4px)'),
+        ('md', 'Médio (8px)'),
+        ('lg', 'Grande (12px)'),
+        ('xl', 'Extra Grande (16px)'),
+        ('2xl', 'Máximo (24px)'),
+    ], string='Borda Arredondada', default='md',
        config_parameter='mckz_web_enterprise_theme.border_radius')
 
     #----------------------------------------------------------
@@ -67,7 +67,7 @@ class ResConfigSettings(models.TransientModel):
     #----------------------------------------------------------
 
     theme_font_family = fields.Selection([
-        ('system', 'System Default'),
+        ('system', 'Padrão do Sistema'),
         ('inter', 'Inter'),
         ('roboto', 'Roboto'),
         ('open-sans', 'Open Sans'),
@@ -88,7 +88,7 @@ class ResConfigSettings(models.TransientModel):
         ('exo-2', 'Exo 2'),
         ('josefin-sans', 'Josefin Sans'),
         ('manrope', 'Manrope'),
-    ], string='Font Family', default='system',
+    ], string='Família de Fonte', default='system',
        config_parameter='mckz_web_enterprise_theme.font_family')
 
     #----------------------------------------------------------
@@ -96,10 +96,10 @@ class ResConfigSettings(models.TransientModel):
     #----------------------------------------------------------
 
     theme_density = fields.Selection([
-        ('compact', 'Compact'),
-        ('comfortable', 'Comfortable'),
-        ('spacious', 'Spacious'),
-    ], string='Interface Density', default='comfortable',
+        ('compact', 'Compacto'),
+        ('comfortable', 'Confortável'),
+        ('spacious', 'Espaçoso'),
+    ], string='Densidade da Interface', default='comfortable',
        config_parameter='mckz_web_enterprise_theme.density')
 
     #----------------------------------------------------------
@@ -107,27 +107,27 @@ class ResConfigSettings(models.TransientModel):
     #----------------------------------------------------------
 
     theme_color_appbar_text_light = fields.Char(
-        string='AppsBar Text Light Color'
+        string='Cor do Texto do Menu (Claro)'
     )
 
     theme_color_appbar_active_light = fields.Char(
-        string='AppsBar Active Light Color'
+        string='Cor do Item Ativo (Claro)'
     )
 
     theme_color_appbar_background_light = fields.Char(
-        string='AppsBar Background Light Color'
+        string='Cor de Fundo do Menu (Claro)'
     )
 
     theme_color_appbar_text_dark = fields.Char(
-        string='AppsBar Text Dark Color'
+        string='Cor do Texto do Menu (Escuro)'
     )
 
     theme_color_appbar_active_dark = fields.Char(
-        string='AppsBar Active Dark Color'
+        string='Cor do Item Ativo (Escuro)'
     )
 
     theme_color_appbar_background_dark = fields.Char(
-        string='AppsBar Background Dark Color'
+        string='Cor de Fundo do Menu (Escuro)'
     )
 
     #----------------------------------------------------------

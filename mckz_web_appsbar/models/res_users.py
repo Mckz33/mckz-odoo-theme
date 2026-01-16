@@ -27,11 +27,12 @@ class ResUsers(models.Model):
     
     sidebar_type = fields.Selection(
         selection=[
-            ('invisible', 'Invisible'),
-            ('small', 'Small'),
-            ('large', 'Large')
-        ], 
-        string="Sidebar Type",
+            ('invisible', 'Invisível'),
+            ('small', 'Pequeno'),
+            ('large', 'Grande')
+        ],
+        string="Tipo de Menu Lateral",
         default='large',
         required=True,
+        help="Define o tamanho do menu lateral de aplicativos",
     )
