@@ -1,0 +1,140 @@
+// MckZ Chatter Styles
+
+// Composer send button style
+.o-mail-Chatter-top:has(.o-mail-Chatter-sendMessage.active) .o-mail-Composer-send {
+    @extend .btn-danger
+}
+
+// Resize handle for sidebar chatter
+.o-mail-Form-chatter.o-aside {
+    position: relative;
+    transition: width 0.1s ease-out;
+
+    .mckz_chatter_resize {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 6px;
+        height: 100%;
+        cursor: col-resize;
+        z-index: 10;
+        background: transparent;
+        transition: background 0.2s ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 40px;
+            background: #cbd5e1;
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.05);
+
+            &::before {
+                opacity: 1;
+            }
+        }
+
+        &:active {
+            background: rgba(0, 0, 0, 0.1);
+
+            &::before {
+                opacity: 1;
+                background: var(--primary, #007bff);
+            }
+        }
+    }
+}
+
+// Body class during resize
+body.mckz_chatter_resizing {
+    cursor: col-resize !important;
+    user-select: none !important;
+
+    * {
+        cursor: col-resize !important;
+    }
+
+    .mckz_chatter_resize {
+        background: rgba(0, 0, 0, 0.1) !important;
+
+        &::before {
+            opacity: 1 !important;
+            background: var(--primary, #007bff) !important;
+        }
+    }
+}
+
+// Chatter improvements
+.o-mail-Form-chatter {
+    // Better scrolling
+    .o-mail-Thread {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
+}
+
+// Dark mode adjustments
+.o_dark {
+    .o-mail-Form-chatter.o-aside {
+        .mckz_chatter_resize {
+            &::before {
+                background: #64748b;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            &:active {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    body.mckz_chatter_resizing {
+        .mckz_chatter_resize {
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+    }
+
+    .o-mail-Form-chatter {
+        .o-mail-Thread {
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
+            &::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.2);
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.3);
+                }
+            }
+        }
+    }
+}

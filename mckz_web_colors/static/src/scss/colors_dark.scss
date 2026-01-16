@@ -1,0 +1,31 @@
+// Colors - Dark Mode (Default: Metronic scheme)
+
+$mckz_color_brand: #1B84FF;
+$mckz_color_primary: #7239EA;
+
+$mckz_color_success: #17C653;
+$mckz_color_info: #7239EA;
+$mckz_color_warning: #F6C000;
+$mckz_color_danger: #F8285A;
+
+// Override Odoo variables
+
+$o-community-color: $mckz-color-brand;
+$o-enterprise-color: $mckz-color-brand;
+$o-enterprise-action-color: $mckz-color-primary;
+
+$o-brand-odoo: $mckz-color-brand;
+$o-brand-primary: $mckz-color-primary;
+
+$o-success: $mckz-color-success;
+$o-info: $mckz-color-info;
+$o-warning: $mckz-color-warning;
+$o-danger: $mckz-color-danger;
+
+$o-theme-text-colors: (
+    "primary": $mckz-color-brand,
+    "success": $o-success,
+    "info": $o-info,
+    "warning": $o-warning,
+    "danger": $o-danger,
+);

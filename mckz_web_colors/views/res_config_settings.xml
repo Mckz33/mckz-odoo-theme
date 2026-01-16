@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_res_config_settings_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='user_default_rights']" position="before">
+                <block title="Theme Branding" id="branding_settings">
+
+                    <!-- Color Scheme Selection -->
+                    <setting string="Color Schemes" help="Select a predefined color scheme or customize your own">
+                        <div class="content-group">
+                            <div class="mt-2 mb-3">
+                                <label for="color_scheme" string="Color Scheme" class="o_light_label"/>
+                                <field name="color_scheme" widget="radio" options="{'horizontal': true}"/>
+                            </div>
+
+                            <!-- Color Scheme Preview Grid -->
+                            <div class="row g-3 mb-3">
+                                <!-- Metronic -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="metronic">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Metronic</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#1B84FF;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#7239EA;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#17C653;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#F6C000;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#F8285A;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Slate -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="slate">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Slate</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#334155;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#3B82F6;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#22C55E;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#EAB308;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#EF4444;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Haze -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="haze">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Haze</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#6366F1;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#8B5CF6;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#10B981;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#F59E0B;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#EF4444;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Gray -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="gray">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Gray</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#4B5563;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#6B7280;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#10B981;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#F59E0B;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#EF4444;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Neutral -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="neutral">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Neutral</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#78716C;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#A8A29E;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#84CC16;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#FBBF24;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#F87171;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sage -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="sage">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Sage</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#4D7C0F;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#65A30D;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#22C55E;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#EAB308;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#DC2626;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Zinc -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="zinc">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Zinc</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#3F3F46;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#71717A;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#22C55E;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#FACC15;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#F43F5E;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mauve -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card h-100 mckz_scheme_card" data-scheme="mauve">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-2 text-center">Mauve</h6>
+                                            <div class="d-flex gap-1 justify-content-center">
+                                                <span class="rounded" style="width:20px;height:20px;background:#7C3AED;" title="Brand"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#A855F7;" title="Primary"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#34D399;" title="Success"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#FCD34D;" title="Warning"></span>
+                                                <span class="rounded" style="width:20px;height:20px;background:#FB7185;" title="Danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </setting>
+
+                    <!-- Light Mode Colors -->
+                    <setting string="Light Mode Colors" help="Customize the look and feel of the light mode">
+                        <div class="content-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_brand_light" string="Brand" class="me-auto"/>
+                                        <field name="color_brand_light" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_primary_light" string="Primary" class="me-auto"/>
+                                        <field name="color_primary_light" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_info_light" string="Info" class="me-auto"/>
+                                        <field name="color_info_light" class="w-25" widget="color"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_success_light" string="Success" class="me-auto"/>
+                                        <field name="color_success_light" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_warning_light" string="Warning" class="me-auto"/>
+                                        <field name="color_warning_light" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_danger_light" string="Danger" class="me-auto"/>
+                                        <field name="color_danger_light" class="w-25" widget="color"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                name="action_reset_light_color_assets"
+                                icon="fa-refresh"
+                                type="object"
+                                string="Reset Light Colors"
+                                class="btn-link"
+                            />
+                        </div>
+                    </setting>
+
+                    <!-- Dark Mode Colors -->
+                    <setting string="Dark Mode Colors" help="Customize the look and feel of the dark mode">
+                        <div class="content-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_brand_dark" string="Brand" class="me-auto"/>
+                                        <field name="color_brand_dark" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_primary_dark" string="Primary" class="me-auto"/>
+                                        <field name="color_primary_dark" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_info_dark" string="Info" class="me-auto"/>
+                                        <field name="color_info_dark" class="w-25" widget="color"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_success_dark" string="Success" class="me-auto"/>
+                                        <field name="color_success_dark" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_warning_dark" string="Warning" class="me-auto"/>
+                                        <field name="color_warning_dark" class="w-25" widget="color"/>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="color_danger_dark" string="Danger" class="me-auto"/>
+                                        <field name="color_danger_dark" class="w-25" widget="color"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                name="action_reset_dark_color_assets"
+                                icon="fa-refresh"
+                                type="object"
+                                string="Reset Dark Colors"
+                                class="btn-link"
+                            />
+                        </div>
+                    </setting>
+
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_res_config_settings_appsbar_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mckz_web_appsbar.view_res_config_settings_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='appbar_image']/../.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_config_settings_colors_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mckz_web_colors.view_res_config_settings_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='branding_settings']" position="attributes">
+                <attribute name="string">Backend Theme</attribute>
+            </xpath>
+
+            <!-- Add Border Radius and Density Controls after Color Schemes -->
+            <xpath expr="//field[@name='color_scheme']/ancestor::setting" position="after">
+
+                <!-- Border Radius Control -->
+                <setting string="Border Radius" help="Control the roundness of corners throughout the interface">
+                    <div class="content-group">
+                        <div class="mt-2">
+                            <field name="theme_border_radius" widget="radio" options="{'horizontal': true}"/>
+                        </div>
+                        <div class="row g-2 mt-3">
+                            <div class="col-2 text-center">
+                                <div class="border p-3" style="border-radius: 0;">
+                                    <small class="text-muted">None</small>
+                                </div>
+                            </div>
+                            <div class="col-2 text-center">
+                                <div class="border p-3" style="border-radius: 4px;">
+                                    <small class="text-muted">Small</small>
+                                </div>
+                            </div>
+                            <div class="col-2 text-center">
+                                <div class="border p-3" style="border-radius: 8px;">
+                                    <small class="text-muted">Medium</small>
+                                </div>
+                            </div>
+                            <div class="col-2 text-center">
+                                <div class="border p-3" style="border-radius: 12px;">
+                                    <small class="text-muted">Large</small>
+                                </div>
+                            </div>
+                            <div class="col-2 text-center">
+                                <div class="border p-3" style="border-radius: 16px;">
+                                    <small class="text-muted">X-Large</small>
+                                </div>
+                            </div>
+                            <div class="col-2 text-center">
+                                <div class="border p-3" style="border-radius: 24px;">
+                                    <small class="text-muted">2X-Large</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </setting>
+
+                <!-- Density Control -->
+                <setting string="Interface Density" help="Control the spacing and padding of interface elements">
+                    <div class="content-group">
+                        <div class="mt-2">
+                            <field name="theme_density" widget="radio" options="{'horizontal': true}"/>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-body p-2">
+                                        <h6 class="card-title small mb-1">Compact</h6>
+                                        <p class="card-text small text-muted mb-0">
+                                            Reduced spacing for more content density. Best for power users.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <h6 class="card-title small mb-2">Comfortable</h6>
+                                        <p class="card-text small text-muted mb-0">
+                                            Balanced spacing for everyday use. Default option.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-body p-4">
+                                        <h6 class="card-title small mb-3">Spacious</h6>
+                                        <p class="card-text small text-muted mb-0">
+                                            Extra padding for better readability. Best for accessibility.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </setting>
+
+                <!-- Font Family Control -->
+                <setting string="Font Family" help="Select a Google Font for the interface typography">
+                    <div class="content-group">
+                        <div class="mt-2">
+                            <field name="theme_font_family" widget="selection"/>
+                        </div>
+                        <div class="row g-2 mt-3">
+                            <div class="col-md-3">
+                                <div class="card p-2 text-center" style="font-family: system-ui;">
+                                    <small>System Default</small>
+                                    <strong>Aa Bb Cc</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2 text-center" style="font-family: 'Inter', sans-serif;">
+                                    <small>Inter</small>
+                                    <strong>Aa Bb Cc</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2 text-center" style="font-family: 'Roboto', sans-serif;">
+                                    <small>Roboto</small>
+                                    <strong>Aa Bb Cc</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2 text-center" style="font-family: 'Poppins', sans-serif;">
+                                    <small>Poppins</small>
+                                    <strong>Aa Bb Cc</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </setting>
+
+            </xpath>
+
+            <!-- AppsBar Colors -->
+            <xpath expr="//field[@name='color_primary_light']/.." position="after">
+                <div class="d-flex align-items-center mb-2">
+                    <label for="theme_color_appbar_text_light" string="Apps Text" class="me-auto"/>
+                    <field name="theme_color_appbar_text_light" class="w-25" widget="color"/>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <label for="theme_color_appbar_active_light" string="Apps Active" class="me-auto"/>
+                    <field name="theme_color_appbar_active_light" class="w-25" widget="color"/>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <label for="theme_color_appbar_background_light" string="Apps Background" class="me-auto"/>
+                    <field name="theme_color_appbar_background_light" class="w-25" widget="color"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='color_primary_dark']/.." position="after">
+                <div class="d-flex align-items-center mb-2">
+                    <label for="theme_color_appbar_text_dark" string="Apps Text" class="me-auto"/>
+                    <field name="theme_color_appbar_text_dark" class="w-25" widget="color"/>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <label for="theme_color_appbar_active_dark" string="Apps Active" class="me-auto"/>
+                    <field name="theme_color_appbar_active_dark" class="w-25" widget="color"/>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <label for="theme_color_appbar_background_dark" string="Apps Background" class="me-auto"/>
+                    <field name="theme_color_appbar_background_dark" class="w-25" widget="color"/>
+                </div>
+            </xpath>
+
+            <!-- Background Images and Favicon -->
+            <xpath expr="//block[@id='branding_settings']" position="inside">
+                <setting
+                    string="Light Mode Background Image"
+                    company_dependent="1"
+                    help="Set the background image for the apps menu"
+                >
+                    <field name="theme_background_image_light" widget="image" class="ml-4 w-75 bg-transparent"/>
+                </setting>
+                <setting
+                    string="Dark Mode Background Image"
+                    company_dependent="1"
+                    help="Set the background image for the apps menu"
+                >
+                    <field name="theme_background_image_dark" widget="image" class="ml-4 w-75 bg-transparent"/>
+                </setting>
+                <setting string="AppsBar" company_dependent="1" help="Set your own Logo for the appsbar">
+                    <div class="w-50 row">
+                        <field name="appbar_image" widget="image" class="oe_avatar bg-transparent"/>
+                    </div>
+                </setting>
+                <setting string="Favicon" company_dependent="1" help="Set your own favicon">
+                    <div class="w-50 row">
+                        <field name="theme_favicon" widget="image" class="oe_avatar bg-transparent"/>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,468 @@
+// MckZ AppsBar - Modern Sidebar
+
+// Variables (using defaults if parent vars not available)
+$sidebar-width: 260px;
+$sidebar-bg: $mckz-appbar-background;
+$sidebar-bg-light: lighten($mckz-appbar-background, 5%);
+$sidebar-text: $mckz-appbar-color;
+$sidebar-text-hover: #ffffff;
+$sidebar-accent: $mckz-appbar-active;
+$sidebar-border: rgba(255, 255, 255, 0.08);
+
+// Fixed Toggle Button
+.mckz_sidebar_toggle_fixed {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 56px;
+    background: $sidebar-bg;
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1059;
+    transition: all 0.25s ease;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+        width: 48px;
+        background: $sidebar-bg-light;
+    }
+
+    i {
+        color: $sidebar-text;
+        font-size: 18px;
+    }
+
+    &.open {
+        left: $sidebar-width;
+    }
+}
+
+// Sidebar Panel
+.mckz_apps_sidebar_panel {
+    position: fixed;
+    top: 0;
+    left: -$sidebar-width;
+    width: $sidebar-width;
+    height: 100vh;
+    background: $sidebar-bg;
+    z-index: 1058;
+    overflow: hidden;
+    transition: left 0.25s ease;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
+
+    &.open {
+        left: 0;
+    }
+
+    .mckz_apps_sidebar {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+// Header
+.mckz_sidebar_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid $sidebar-border;
+    background: rgba(0, 0, 0, 0.15);
+
+    .mckz_sidebar_brand {
+        display: flex;
+        align-items: center;
+
+        .mckz_brand_logo {
+            max-height: 36px;
+            max-width: 140px;
+        }
+
+        .mckz_brand_text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+    }
+
+    .mckz_sidebar_close {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        color: $sidebar-text;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+    }
+}
+
+// Sidebar Section
+.mckz_sidebar_section {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0;
+
+    @include mckz-disable-scrollbar();
+
+    .mckz_section_title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 20px 16px;
+        color: $sidebar-text;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        i {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+    }
+}
+
+// Apps Menu
+.mckz_apps_sidebar_menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+        margin: 2px 12px;
+
+        .mckz_menu_item {
+            display: flex;
+            align-items: center;
+            padding: 12px 14px;
+            color: $sidebar-text;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+
+            .mckz_app_icon {
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+                margin-right: 14px;
+                flex-shrink: 0;
+                object-fit: cover;
+            }
+
+            .mckz_app_icon_placeholder {
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+                margin-right: 14px;
+                background: $sidebar-accent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+
+                i {
+                    color: #fff;
+                    font-size: 14px;
+                }
+            }
+
+            .mckz_app_name {
+                flex: 1;
+                font-size: 14px;
+                font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .mckz_submenu_arrow {
+                font-size: 10px;
+                opacity: 0.4;
+                transition: all 0.2s ease;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.06);
+                color: $sidebar-text-hover;
+
+                .mckz_submenu_arrow {
+                    opacity: 1;
+                    transform: translateX(3px);
+                }
+            }
+        }
+
+        &.active .mckz_menu_item {
+            background: rgba($sidebar-accent, 0.2);
+            color: #fff;
+            box-shadow: inset 3px 0 0 $sidebar-accent;
+        }
+
+        &.hovered .mckz_menu_item {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+    }
+}
+
+// Footer
+.mckz_sidebar_footer {
+    padding: 12px;
+    border-top: 1px solid $sidebar-border;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.mckz_footer_item {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    color: $sidebar-text;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin-bottom: 4px;
+
+    i:first-child {
+        width: 20px;
+        font-size: 16px;
+        margin-right: 12px;
+        text-align: center;
+    }
+
+    span {
+        flex: 1;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .mckz_user_arrow {
+        font-size: 10px;
+        opacity: 0.5;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: $sidebar-text-hover;
+    }
+
+    &.active {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+    }
+}
+
+// User Section
+.mckz_user_section {
+    .mckz_user_name {
+        max-width: 130px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.mckz_user_dropdown {
+    background: $sidebar-bg-light;
+    border-radius: 10px;
+    margin-top: 4px;
+    padding: 8px;
+
+    .mckz_dropdown_item {
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        color: $sidebar-text;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.15s ease;
+        cursor: pointer;
+        font-size: 13px;
+
+        i {
+            width: 18px;
+            margin-right: 10px;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+
+            i {
+                opacity: 1;
+            }
+        }
+
+        &.mckz_logout {
+            color: #ef4444;
+
+            &:hover {
+                background: rgba(239, 68, 68, 0.15);
+                color: #f87171;
+            }
+        }
+    }
+
+    .mckz_dropdown_divider {
+        height: 1px;
+        background: $sidebar-border;
+        margin: 8px 0;
+    }
+}
+
+// Overlay
+.mckz_sidebar_overlay {
+    position: fixed;
+    top: 0;
+    left: $sidebar-width;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1055;
+}
+
+// Submenu Panel
+.mckz_submenu_panel {
+    position: fixed;
+    left: calc(#{$sidebar-width} + 8px);
+    min-width: 220px;
+    max-width: 280px;
+    max-height: calc(100vh - 100px);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    z-index: 1070;
+    overflow: hidden;
+
+    .mckz_submenu_header {
+        padding: 16px 18px;
+        background: $sidebar-bg;
+
+        .mckz_submenu_title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+
+    .mckz_submenu_list {
+        list-style: none;
+        margin: 0;
+        padding: 8px;
+        max-height: 350px;
+        overflow-y: auto;
+
+        .mckz_submenu_item {
+            margin-bottom: 2px;
+        }
+
+        .mckz_submenu_link {
+            display: block;
+            padding: 10px 14px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.15s ease;
+
+            &:hover {
+                background: #f3f4f6;
+                color: $sidebar-accent;
+            }
+
+            &.mckz_nested {
+                padding-left: 28px;
+                font-size: 12px;
+                font-weight: 400;
+                color: #6b7280;
+
+                &:hover {
+                    color: $sidebar-accent;
+                }
+            }
+        }
+
+        .mckz_submenu_nested {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+// Dark mode
+.o_dark {
+    .mckz_submenu_panel {
+        background: #1f2937;
+
+        .mckz_submenu_list .mckz_submenu_link {
+            color: #e5e7eb;
+
+            &:hover {
+                background: #374151;
+            }
+
+            &.mckz_nested {
+                color: #9ca3af;
+            }
+        }
+    }
+}
+
+// Hide on home menu and fullscreen
+.o_home_menu_background,
+.o_fullscreen {
+    .mckz_apps_sidebar_panel,
+    .mckz_sidebar_toggle_fixed,
+    .mckz_sidebar_overlay,
+    .mckz_submenu_panel {
+        display: none !important;
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .mckz_sidebar_toggle_fixed {
+        top: auto;
+        bottom: 24px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+        &.open {
+            left: calc(100% - 70px);
+        }
+    }
+
+    .mckz_apps_sidebar_panel {
+        width: 100%;
+        left: -100%;
+    }
+
+    .mckz_sidebar_overlay {
+        left: 0;
+    }
+
+    .mckz_submenu_panel {
+        display: none;
+    }
+}

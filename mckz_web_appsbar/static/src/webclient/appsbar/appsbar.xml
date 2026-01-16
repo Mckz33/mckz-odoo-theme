@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates xml:space="preserve">
+
+    <!-- Hide the navbar completely -->
+    <t t-inherit="web.NavBar" t-inherit-mode="extension">
+        <xpath expr="//nav[hasclass('o_main_navbar')]" position="attributes">
+            <attribute name="class">o_main_navbar d-none</attribute>
+        </xpath>
+    </t>
+
+    <!-- Add AppsBar to WebClient -->
+    <t t-inherit="web.WebClient" t-inherit-mode="extension">
+        <xpath expr="//NavBar" position="after">
+            <AppsBar/>
+        </xpath>
+    </t>
+
+    <t t-name="mckz_web_appsbar.AppsBar">
+        <!-- Fixed Toggle Button on left side -->
+        <div
+            t-attf-class="mckz_sidebar_toggle_fixed {{ state.sidebarOpen ? 'open' : '' }}"
+            t-on-click="() => this.toggleSidebar()"
+        >
+            <i t-attf-class="fa {{ state.sidebarOpen ? 'fa-chevron-left' : 'fa-bars' }}"/>
+        </div>
+
+        <!-- Sidebar Panel -->
+        <div
+            t-ref="sidebarPanel"
+            t-attf-class="mckz_apps_sidebar_panel {{ state.sidebarOpen ? 'open' : '' }}"
+            t-on-mouseenter="() => this._onSidebarMouseEnter()"
+            t-on-mouseleave="() => this._onSidebarMouseLeave()"
+        >
+            <div class="mckz_apps_sidebar">
+                <!-- Header -->
+                <div class="mckz_sidebar_header">
+                    <div class="mckz_sidebar_brand">
+                        <img t-if="sidebarImageUrl" t-att-src="sidebarImageUrl" alt="Logo" class="mckz_brand_logo"/>
+                        <span t-else="" class="mckz_brand_text">Menu</span>
+                    </div>
+                    <a class="mckz_sidebar_close" t-on-click="() => this.closeSidebar()">
+                        <i class="fa fa-times"/>
+                    </a>
+                </div>
+
+                <!-- Apps Section -->
+                <div class="mckz_sidebar_section">
+                    <div class="mckz_section_title">
+                        <i class="fa fa-th-large"/>
+                        <span>Aplicativos</span>
+                    </div>
+                    <ul class="mckz_apps_sidebar_menu">
+                        <t t-foreach="this.appMenuService.getAppsMenuItems()" t-as="app" t-key="app.id">
+                            <li
+                                t-attf-class="{{ app.id === this.appMenuService.getCurrentApp()?.id ? 'active' : '' }} {{ state.hoveredApp?.id === app.id ? 'hovered' : '' }}"
+                            >
+                                <a
+                                    t-att-href="app.href"
+                                    t-att-data-menu-id="app.id"
+                                    t-on-click.prevent="() => this._onAppClick(app)"
+                                    t-on-mouseenter="(ev) => this._onAppMouseEnter(app, ev)"
+                                    t-on-mouseleave="() => this._onAppMouseLeave()"
+                                    class="mckz_menu_item"
+                                    role="menuitem"
+                                >
+                                    <img
+                                        t-if="app.webIconData"
+                                        class="mckz_app_icon"
+                                        t-att-src="app.webIconData"
+                                    />
+                                    <span t-else="" class="mckz_app_icon_placeholder">
+                                        <i class="fa fa-cube"/>
+                                    </span>
+                                    <span class="mckz_app_name">
+                                        <t t-out="app.label"/>
+                                    </span>
+                                    <i t-if="this._getMenuItems(app).length > 0" class="fa fa-chevron-right mckz_submenu_arrow"/>
+                                </a>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+
+                <!-- Bottom Section - Settings and User -->
+                <div class="mckz_sidebar_footer">
+                    <!-- Settings -->
+                    <a class="mckz_footer_item" t-on-click="() => this.openSettings()">
+                        <i class="fa fa-cog"/>
+                        <span>Configurações</span>
+                    </a>
+
+                    <!-- User Menu -->
+                    <div class="mckz_user_section">
+                        <a
+                            t-attf-class="mckz_footer_item mckz_user_trigger {{ state.userMenuOpen ? 'active' : '' }}"
+                            t-on-click="() => this.toggleUserMenu()"
+                        >
+                            <i class="fa fa-user-circle"/>
+                            <span class="mckz_user_name"><t t-out="userName"/></span>
+                            <i t-attf-class="fa fa-chevron-{{ state.userMenuOpen ? 'down' : 'right' }} mckz_user_arrow"/>
+                        </a>
+
+                        <!-- User Dropdown -->
+                        <div t-if="state.userMenuOpen" class="mckz_user_dropdown">
+                            <a class="mckz_dropdown_item" t-on-click="() => this.openPreferences()">
+                                <i class="fa fa-id-card"/>
+                                <span>Meu Perfil</span>
+                            </a>
+                            <a class="mckz_dropdown_item" t-on-click="() => this.openDocumentation()">
+                                <i class="fa fa-book"/>
+                                <span>Documentação</span>
+                            </a>
+                            <a class="mckz_dropdown_item" t-on-click="() => this.openSupport()">
+                                <i class="fa fa-life-ring"/>
+                                <span>Suporte</span>
+                            </a>
+                            <a class="mckz_dropdown_item" t-on-click="() => this.openShortcuts()">
+                                <i class="fa fa-keyboard-o"/>
+                                <span>Atalhos</span>
+                            </a>
+                            <div class="mckz_dropdown_divider"/>
+                            <a class="mckz_dropdown_item mckz_logout" t-on-click="() => this.logout()">
+                                <i class="fa fa-sign-out"/>
+                                <span>Sair</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div
+            t-if="state.sidebarOpen"
+            class="mckz_sidebar_overlay"
+            t-on-click="() => this.closeSidebar()"
+        />
+
+        <!-- Floating Submenu Panel -->
+        <div
+            t-if="state.submenuVisible"
+            class="mckz_submenu_panel"
+            t-att-style="'top:' + state.submenuPosition.top + 'px'"
+            t-on-mouseenter="() => this._onSubmenuMouseEnter()"
+            t-on-mouseleave="() => this._onSubmenuMouseLeave()"
+        >
+            <div class="mckz_submenu_header">
+                <span class="mckz_submenu_title">
+                    <t t-out="state.hoveredApp?.label"/>
+                </span>
+            </div>
+            <ul class="mckz_submenu_list">
+                <t t-foreach="state.submenuItems" t-as="menu" t-key="menu.id">
+                    <li class="mckz_submenu_item">
+                        <a
+                            t-att-href="menu.href || '#'"
+                            t-on-click.prevent="() => this._onSubmenuItemClick(menu)"
+                            class="mckz_submenu_link"
+                        >
+                            <span><t t-out="menu.name"/></span>
+                        </a>
+                        <t t-if="this._hasChildren(menu)">
+                            <ul class="mckz_submenu_nested">
+                                <t t-foreach="menu.childrenTree" t-as="child" t-key="child.id">
+                                    <li>
+                                        <a
+                                            t-att-href="child.href || '#'"
+                                            t-on-click.prevent="() => this._onSubmenuItemClick(child)"
+                                            class="mckz_submenu_link mckz_nested"
+                                        >
+                                            <span><t t-out="child.name"/></span>
+                                        </a>
+                                    </li>
+                                </t>
+                            </ul>
+                        </t>
+                    </li>
+                </t>
+            </ul>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,25 @@
+// MckZ Settings Page Styles
+
+.mckz_scheme_card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+
+    &:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &.active {
+        border-color: var(--primary);
+        background-color: rgba(var(--primary-rgb), 0.05);
+    }
+}
+
+// Color scheme radio buttons styling
+.o_setting_box [name="color_scheme"] {
+    .o_radio_input {
+        margin-right: 0.5rem;
+    }
+}

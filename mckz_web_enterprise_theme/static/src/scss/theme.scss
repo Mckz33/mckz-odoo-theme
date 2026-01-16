@@ -1,0 +1,147 @@
+// MckZ Theme Styles
+
+// CSS Variables for runtime theme customization
+:root {
+    // Border Radius (default: 8px)
+    --mckz-border-radius: 8px;
+
+    // Density factor (default: 1)
+    --mckz-density-factor: 1;
+
+    // Computed values
+    --mckz-spacing-xs: calc(4px * var(--mckz-density-factor));
+    --mckz-spacing-sm: calc(8px * var(--mckz-density-factor));
+    --mckz-spacing-md: calc(16px * var(--mckz-density-factor));
+    --mckz-spacing-lg: calc(24px * var(--mckz-density-factor));
+    --mckz-spacing-xl: calc(32px * var(--mckz-density-factor));
+}
+
+// Apply border radius to common elements
+.btn {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.card {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.modal-content {
+    border-radius: calc(var(--mckz-border-radius) * 1.5) !important;
+}
+
+.dropdown-menu {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.form-control,
+.form-select {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.badge {
+    border-radius: calc(var(--mckz-border-radius) * 0.5) !important;
+}
+
+.alert {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.toast {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+// Odoo specific elements
+.o_form_sheet {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.o_kanban_record {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.o_list_table {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.o_searchview {
+    border-radius: var(--mckz-border-radius) !important;
+}
+
+.o_control_panel {
+    .o_searchview_input_container {
+        border-radius: var(--mckz-border-radius) !important;
+    }
+}
+
+// Apply density to elements
+.o_form_view {
+    .o_form_sheet {
+        padding: var(--mckz-spacing-lg) !important;
+    }
+
+    .o_inner_group {
+        padding: var(--mckz-spacing-sm) 0 !important;
+    }
+}
+
+.o_list_view {
+    .o_data_row {
+        td {
+            padding: var(--mckz-spacing-sm) var(--mckz-spacing-md) !important;
+        }
+    }
+}
+
+.o_kanban_view {
+    .o_kanban_record {
+        padding: var(--mckz-spacing-md) !important;
+        margin-bottom: var(--mckz-spacing-sm) !important;
+    }
+}
+
+// Density classes
+.mckz_density_compact {
+    --mckz-density-factor: 0.75;
+
+    .btn {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.875rem !important;
+    }
+}
+
+.mckz_density_comfortable {
+    --mckz-density-factor: 1;
+}
+
+.mckz_density_spacious {
+    --mckz-density-factor: 1.25;
+
+    .btn {
+        padding: 0.625rem 1.25rem !important;
+    }
+}
+
+// Border radius preset classes
+.mckz_radius_none {
+    --mckz-border-radius: 0px;
+}
+
+.mckz_radius_sm {
+    --mckz-border-radius: 4px;
+}
+
+.mckz_radius_md {
+    --mckz-border-radius: 8px;
+}
+
+.mckz_radius_lg {
+    --mckz-border-radius: 12px;
+}
+
+.mckz_radius_xl {
+    --mckz-border-radius: 16px;
+}
+
+.mckz_radius_2xl {
+    --mckz-border-radius: 24px;
+}

@@ -1,0 +1,11 @@
+// Colors
+
+$mckz_color_appbar_text: #E4E4E4;
+$mckz_color_appbar_active: #5D8DA8;
+$mckz_color_appbar_background: #3C3E4B;
+
+// Override
+
+$mckz-appbar-color: $mckz_color_appbar_text;
+$mckz-appbar-active: $mckz_color_appbar_active;
+$mckz-appbar-background: $mckz_color_appbar_background;

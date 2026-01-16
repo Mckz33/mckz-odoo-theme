@@ -1,0 +1,132 @@
+// MckZ Google Fonts Integration
+
+// Default fonts
+$mckz-font-family-base: var(--mckz-font-family, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif) !default;
+$mckz-font-family-heading: var(--mckz-font-family-heading, var(--mckz-font-family)) !default;
+$mckz-font-family-mono: var(--mckz-font-family-mono, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace) !default;
+
+// Font size scale
+$mckz-font-size-xs: 0.75rem;   // 12px
+$mckz-font-size-sm: 0.875rem;  // 14px
+$mckz-font-size-base: 1rem;    // 16px
+$mckz-font-size-lg: 1.125rem;  // 18px
+$mckz-font-size-xl: 1.25rem;   // 20px
+$mckz-font-size-2xl: 1.5rem;   // 24px
+$mckz-font-size-3xl: 1.875rem; // 30px
+
+// Apply font family to the interface
+:root {
+    --mckz-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mckz-font-family-heading: var(--mckz-font-family);
+    --mckz-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+    font-family: var(--mckz-font-family) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: var(--mckz-font-family-heading) !important;
+}
+
+code, kbd, pre, samp,
+.o_technical_modal,
+.ace_editor {
+    font-family: var(--mckz-font-family-mono) !important;
+}
+
+// Odoo specific elements
+.o_menu_systray,
+.o_navbar,
+.o_main_navbar {
+    font-family: var(--mckz-font-family) !important;
+}
+
+.o_form_view,
+.o_list_view,
+.o_kanban_view,
+.o_search_panel {
+    font-family: var(--mckz-font-family) !important;
+}
+
+// Font presets (will be applied via JS)
+.mckz_font_inter {
+    --mckz-font-family: 'Inter', sans-serif;
+}
+
+.mckz_font_roboto {
+    --mckz-font-family: 'Roboto', sans-serif;
+}
+
+.mckz_font_open-sans {
+    --mckz-font-family: 'Open Sans', sans-serif;
+}
+
+.mckz_font_lato {
+    --mckz-font-family: 'Lato', sans-serif;
+}
+
+.mckz_font_poppins {
+    --mckz-font-family: 'Poppins', sans-serif;
+}
+
+.mckz_font_montserrat {
+    --mckz-font-family: 'Montserrat', sans-serif;
+}
+
+.mckz_font_source-sans-pro {
+    --mckz-font-family: 'Source Sans Pro', sans-serif;
+}
+
+.mckz_font_nunito {
+    --mckz-font-family: 'Nunito', sans-serif;
+}
+
+.mckz_font_raleway {
+    --mckz-font-family: 'Raleway', sans-serif;
+}
+
+.mckz_font_work-sans {
+    --mckz-font-family: 'Work Sans', sans-serif;
+}
+
+.mckz_font_dm-sans {
+    --mckz-font-family: 'DM Sans', sans-serif;
+}
+
+.mckz_font_plus-jakarta-sans {
+    --mckz-font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.mckz_font_mulish {
+    --mckz-font-family: 'Mulish', sans-serif;
+}
+
+.mckz_font_quicksand {
+    --mckz-font-family: 'Quicksand', sans-serif;
+}
+
+.mckz_font_rubik {
+    --mckz-font-family: 'Rubik', sans-serif;
+}
+
+.mckz_font_ubuntu {
+    --mckz-font-family: 'Ubuntu', sans-serif;
+}
+
+.mckz_font_cabin {
+    --mckz-font-family: 'Cabin', sans-serif;
+}
+
+.mckz_font_exo-2 {
+    --mckz-font-family: 'Exo 2', sans-serif;
+}
+
+.mckz_font_josefin-sans {
+    --mckz-font-family: 'Josefin Sans', sans-serif;
+}
+
+.mckz_font_manrope {
+    --mckz-font-family: 'Manrope', sans-serif;
+}

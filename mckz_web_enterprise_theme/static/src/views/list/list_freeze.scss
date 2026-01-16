@@ -1,0 +1,144 @@
+// MckZ Column Freeze Styles
+
+// Frozen column styling
+.mckz_frozen_column {
+    background: inherit;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -4px;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+        pointer-events: none;
+    }
+}
+
+// Header frozen indicator
+th.mckz_frozen_column {
+    background: var(--o-list-header-bg, #f0f0f0) !important;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+        background: var(--primary, #007bff);
+        border-radius: 50%;
+        opacity: 0.7;
+    }
+}
+
+// Cell frozen styling
+td.mckz_frozen_column {
+    background: var(--o-list-row-bg, #fff) !important;
+}
+
+// Alternate row background for frozen cells
+tr:nth-child(even) td.mckz_frozen_column {
+    background: var(--o-list-row-bg-alt, #f8f9fa) !important;
+}
+
+// Context menu for freeze actions
+.mckz_freeze_context_menu {
+    position: fixed;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    min-width: 180px;
+    z-index: 9999;
+    animation: mckz-fade-in 0.15s ease;
+
+    @keyframes mckz-fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .mckz_freeze_menu_item {
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        cursor: pointer;
+        transition: background 0.15s ease;
+
+        &:hover {
+            background: #f3f4f6;
+        }
+
+        i {
+            margin-right: 10px;
+            width: 16px;
+            text-align: center;
+            color: #6b7280;
+        }
+
+        span {
+            font-size: 13px;
+            color: #374151;
+        }
+
+        &.mckz_freeze_active {
+            i {
+                color: var(--primary, #007bff);
+            }
+
+            span {
+                font-weight: 500;
+            }
+        }
+    }
+
+    .mckz_freeze_menu_divider {
+        height: 1px;
+        background: #e5e7eb;
+        margin: 8px 0;
+    }
+}
+
+// Dark mode
+.o_dark {
+    .mckz_freeze_context_menu {
+        background: #1f2937;
+
+        .mckz_freeze_menu_item {
+            &:hover {
+                background: #374151;
+            }
+
+            i {
+                color: #9ca3af;
+            }
+
+            span {
+                color: #e5e7eb;
+            }
+        }
+
+        .mckz_freeze_menu_divider {
+            background: #374151;
+        }
+    }
+
+    th.mckz_frozen_column {
+        background: #374151 !important;
+    }
+
+    td.mckz_frozen_column {
+        background: #1f2937 !important;
+    }
+
+    tr:nth-child(even) td.mckz_frozen_column {
+        background: #111827 !important;
+    }
+}

@@ -1,0 +1,46 @@
+// MckZ Theme Variables
+
+$o-navbar-badge-bg: $o-brand-primary;
+
+// Border Radius Scale
+$mckz-border-radius-none: 0;
+$mckz-border-radius-sm: 4px;
+$mckz-border-radius-md: 8px;
+$mckz-border-radius-lg: 12px;
+$mckz-border-radius-xl: 16px;
+$mckz-border-radius-2xl: 24px;
+$mckz-border-radius-full: 9999px;
+
+// Default border radius
+$mckz-border-radius: var(--mckz-border-radius, #{$mckz-border-radius-md}) !default;
+
+// Density Scale (padding multipliers)
+$mckz-density-compact: 0.75;
+$mckz-density-comfortable: 1;
+$mckz-density-spacious: 1.25;
+
+// Override Bootstrap/Odoo variables based on theme
+$border-radius: $mckz-border-radius;
+$border-radius-sm: calc(#{$mckz-border-radius} * 0.5);
+$border-radius-lg: calc(#{$mckz-border-radius} * 1.5);
+$border-radius-xl: calc(#{$mckz-border-radius} * 2);
+
+// Button overrides
+$btn-border-radius: $mckz-border-radius;
+$btn-border-radius-sm: $border-radius-sm;
+$btn-border-radius-lg: $border-radius-lg;
+
+// Card overrides
+$card-border-radius: $mckz-border-radius;
+$card-inner-border-radius: calc(#{$mckz-border-radius} - 1px);
+
+// Input overrides
+$input-border-radius: $mckz-border-radius;
+$input-border-radius-sm: $border-radius-sm;
+$input-border-radius-lg: $border-radius-lg;
+
+// Modal overrides
+$modal-content-border-radius: calc(#{$mckz-border-radius} * 1.5);
+
+// Dropdown overrides
+$dropdown-border-radius: $mckz-border-radius;
